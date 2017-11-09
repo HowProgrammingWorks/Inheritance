@@ -1,2 +1,1 @@
-# Inheritance
-Inheritance in Different Paradigms
+# Inheritance in Different Paradigms
