@@ -1,13 +1,9 @@
 'use strict';
 
-const util = require('util');
-
-const rect = (x, y, width, height) => {
-  return {
-    x, y, width, height,
-    toString: () => `[${x}, ${y}, ${width}, ${height}]`
-  };
-};
+const rect = (x, y, width, height) => ({
+  x, y, width, height,
+  toString: () => `[${x}, ${y}, ${width}, ${height}]`
+});
 
 const square = (x, y, side) => rect(x, y, side, side);
 
