@@ -47,24 +47,23 @@ const scalable = Category => class extends Category {
 
 // Utils
 
-const compose = (...fns) => arg => (
-  fns.reduce((arg, fn) => fn(arg), arg)
-);
+const pipe = (...fns) => x => fns.reduce((v, f) => f(v), x);
 
 // Usage
 
-const Square1 = equilateral(serializable(measurable(
-  movable(scalable(Rect))
-)));
 
-const toSquare = compose(
-  equilateral, serializable, measurable, movable, scalable
-);
-
+const Square1 = equilateral(serializable(measurable(movable(scalable(Rect)))));
+const toSquare = pipe(equilateral, serializable, measurable, movable, scalable);
 const Square2 = toSquare(Rect);
 
-const p1 = new Square2(10, 20, 50);
+const p1 = new Square1(10, 20, 50);
 p1.scale(1.2);
-p1.move(-10, 5);
+p1.move(10, 7);
 console.log(p1.toString());
 console.log('Area:', p1.area());
+
+const p2 = new Square2(10, 20, 50);
+p2.scale(1.2);
+p2.move(-10, 5);
+console.log(p2.toString());
+console.log('Area:', p2.area());
